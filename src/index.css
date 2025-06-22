@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+body {
+  font-family: "Urbanist", sans-serif;
+}
+
+.btn-primary {
+  border-radius: 10px;
+  background: rgb(202, 235, 102);
+  color: black;
+  font-weight: 700;
+  padding-left: 22px;
+  padding-right: 22px;
+}
