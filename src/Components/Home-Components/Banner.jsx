@@ -11,7 +11,7 @@ import Banner3 from '../../assets/banner/banner3.png'
 
 const Banner = () => {
     return (
-        <div className="w-full">
+        <div className="w-11/12 mx-auto mt-6">
             <Swiper
                 modules={[Pagination, Autoplay]}
                 loop={true}
