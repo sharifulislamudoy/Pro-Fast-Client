@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Awlad Hossin",
+    "designation": "Senior Product Designer",
+    "quote": "A posture corrector works by providing support and gentle alignment to your shoulders, back, and spine, encouraging you to maintain proper posture throughout the day.",
+    "avatar": "/avatars/avatar1.png"
+  },
+  {
+    "name": "Rasel Ahamed",
+    "designation": "CTO",
+    "quote": "This device has really helped with my back pain. It's comfortable and easy to use.",
+    "avatar": "/avatars/avatar2.png"
+  },
+  {
+    "name": "Nasir Uddin",
+    "designation": "CEO",
+    "quote": "I’ve seen significant improvement in my posture and productivity since I started using this.",
+    "avatar": "/avatars/avatar3.png"
+  }
+]

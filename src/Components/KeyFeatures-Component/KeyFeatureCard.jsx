@@ -1,7 +1,7 @@
 const KeyFeatureCard = ({ feature }) => {
-    const { Title, Description, Image } = feature
+    const { Title, Description, Image, Effect } = feature
     return (
-        <div className="bg-white p-6 rounded-2xl">
+        <div className="bg-white p-6 rounded-2xl" data-aos={Effect}>
             <div className="flex gap-5 flex-col lg:flex-row">
                 <img
                     src={Image}
