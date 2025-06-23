@@ -15,7 +15,7 @@ const HowItWorksContainer = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 py-12 px-4 lg:px-20 w-12/13 mx-auto">
+    <section className="py-12 px-4 lg:px-20 w-12/13 mx-auto">
       <div>
         <h2 data-aos="fade-right" className="text-2xl md:text-3xl font-bold text-gray-800 mb-10">How it Works</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

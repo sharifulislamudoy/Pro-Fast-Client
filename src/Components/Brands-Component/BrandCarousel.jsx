@@ -11,7 +11,7 @@ const BrandCarousel = () => {
     const logos = [casio, amazon, moonstar, starplus, startpeople, randstad, amazonVector];
 
     return (
-        <div className="bg-gray-100 py-10">
+        <div className="py-10 w-11/12 mx-auto">
             <h2 data-aos="fade-down" className="text-center text-teal-900 font-bold text-xl mb-8">
                 We've helped thousands of sales teams
             </h2>
