@@ -1,22 +1,45 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
+import { useForm } from 'react-hook-form';
 import { useAuth } from '../Hooks/useAuth';
 
-
 const Login = () => {
-    const { googleLogin } = useAuth();
+    const { googleLogin, signIn } = useAuth();
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+
+    const handleSignIn = (data) => {
+        const { email, password } = data;
+
+        signIn(email, password)
+            .then((result) => {
+                console.log("Login successful:", result.user);
+                reset();
+                // Optionally navigate or show toast
+            })
+            .catch((error) => {
+                console.error("Login failed:", error.message);
+                // Optionally show error toast
+            });
+    };
 
     const handleGoogleLogin = () => {
         googleLogin()
             .then((result) => {
-                console.log('Google Login Successful:', result.user);
+                console.log("Google Login Successful:", result.user);
                 // Optionally: navigate('/dashboard');
             })
             .catch((error) => {
-                console.error('Google Login Failed:', error.message);
+                console.error("Google Login Failed:", error.message);
             });
     };
+
     return (
         <div>
             {/* Heading */}
@@ -24,23 +47,27 @@ const Login = () => {
             <p className="text-sm text-gray-500 mb-6">Login with Profast</p>
 
             {/* Form */}
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit(handleSignIn)} className="space-y-4">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                     <input
                         type="email"
                         placeholder="Email"
+                        {...register("email", { required: true })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-400"
                     />
+                    {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
                 </div>
 
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
                     <input
                         type="password"
-                        placeholder="password"
+                        placeholder="Password"
+                        {...register("password", { required: true })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-400"
                     />
+                    {errors.password && <p className="text-red-500 text-sm">Password is required</p>}
                 </div>
 
                 <div className="text-right">
@@ -67,7 +94,10 @@ const Login = () => {
             </div>
 
             {/* Google login */}
-            <button onClick={handleGoogleLogin} className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-100">
+            <button
+                onClick={handleGoogleLogin}
+                className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-100"
+            >
                 <FcGoogle size={20} />
                 <span className="text-sm font-medium">Login with Google</span>
             </button>
