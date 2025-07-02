@@ -16,12 +16,12 @@ const Footer = () => {
             </aside>
             <nav>
                 <div className="grid grid-flow-col gap-4">
-                    <Link>Services</Link>
-                    <Link>Coverage</Link>
-                    <Link>About Us</Link>
-                    <Link>Pricing</Link>
-                    <Link>Blog</Link>
-                    <Link>Contact</Link>
+                    <Link className='text-xs'>Services</Link>
+                    <Link className='text-xs'>Coverage</Link>
+                    <Link className='text-xs'>About Us</Link>
+                    <Link className='text-xs'>Pricing</Link>
+                    <Link className='text-xs'>Blog</Link>
+                    <Link className='text-xs'>Contact</Link>
                 </div>
             </nav>
             <nav>

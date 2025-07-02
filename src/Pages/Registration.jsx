@@ -1,8 +1,34 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
+import { useForm } from 'react-hook-form';
+import { useAuth } from '../Hooks/useAuth';
 
 const Registration = () => {
+    const { createUser } = useAuth();
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+
+    const handleSignUp = (data) => {
+        const { email, password } = data;
+
+        createUser(email, password)
+            .then((result) => {
+                console.log("User Created:", result.user);
+                reset(); // reset form
+                // Optionally navigate or show success toast
+            })
+            .catch((error) => {
+                console.error("Registration Failed:", error.message);
+                // Optionally show error toast
+            });
+    };
+
     return (
         <div>
             {/* Heading */}
@@ -10,14 +36,16 @@ const Registration = () => {
             <p className="text-sm text-gray-500 mb-6">Register with Profast</p>
 
             {/* Form */}
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit(handleSignUp)} className="space-y-4">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                     <input
-                        type="name"
+                        type="text"
                         placeholder="Name"
+                        {...register("name", { required: true })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-400"
                     />
+                    {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
                 </div>
 
                 <div>
@@ -25,17 +53,21 @@ const Registration = () => {
                     <input
                         type="email"
                         placeholder="Email"
+                        {...register("email", { required: true })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-400"
                     />
+                    {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
                 </div>
 
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
                     <input
                         type="password"
-                        placeholder="password"
+                        placeholder="Password"
+                        {...register("password", { required: true, minLength: 6 })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lime-400"
                     />
+                    {errors.password && <p className="text-red-500 text-sm">Password must be at least 6 characters</p>}
                 </div>
 
                 <button
@@ -48,7 +80,10 @@ const Registration = () => {
 
             {/* Register & OR */}
             <p className="text-sm text-center mt-4">
-                Already have an account? <Link to={'/auth/login'} className="text-lime-500 font-medium">Login</Link>
+                Already have an account?{" "}
+                <Link to={"/auth/login"} className="text-lime-500 font-medium">
+                    Login
+                </Link>
             </p>
 
             <div className="flex items-center my-4">
