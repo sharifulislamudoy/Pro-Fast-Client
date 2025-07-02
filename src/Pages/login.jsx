@@ -1,8 +1,22 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
+import { useAuth } from '../Hooks/useAuth';
 
-const login = () => {
+
+const Login = () => {
+    const { googleLogin } = useAuth();
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then((result) => {
+                console.log('Google Login Successful:', result.user);
+                // Optionally: navigate('/dashboard');
+            })
+            .catch((error) => {
+                console.error('Google Login Failed:', error.message);
+            });
+    };
     return (
         <div>
             {/* Heading */}
@@ -53,7 +67,7 @@ const login = () => {
             </div>
 
             {/* Google login */}
-            <button className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-100">
+            <button onClick={handleGoogleLogin} className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-100">
                 <FcGoogle size={20} />
                 <span className="text-sm font-medium">Login with Google</span>
             </button>
@@ -61,4 +75,4 @@ const login = () => {
     );
 };
 
-export default login;
+export default Login;
