@@ -5,6 +5,7 @@ import ServicesSection from '../Components/Services-Component/ServicesSection';
 import BrandCarousel from '../Components/Brands-Component/BrandCarousel';
 import KeyFeatureSection from '../Components/KeyFeatures-Component/KeyFeatureSection';
 import MerchantBanner from '../Components/Marchent-Component/MerchantBanner';
+import TestimonialCarousel from '../Components/TestimonialCarousel-Component/TestimonialCarousel';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <BrandCarousel />
             <KeyFeatureSection />
             <MerchantBanner />
+            <TestimonialCarousel />
         </div>
     );
 };

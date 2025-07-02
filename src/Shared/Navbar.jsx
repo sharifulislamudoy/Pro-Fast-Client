@@ -11,7 +11,7 @@ const Navbar = () => {
         <li><NavLink to={'rider'}>Be a Rider</NavLink></li>
     </>
     return (
-        <div className="navbar bg-base-100 rounded-2xl w-11/12 mx-auto">
+        <div className="navbar bg-base-100 rounded-2xl w-11/12 mx-auto sticky inset-0 top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
